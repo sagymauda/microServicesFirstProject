@@ -5,10 +5,9 @@ import java.util.Date;
 
 @Service
 public class TimeStempService {
-    static Date generateTimeStamp(){
+    public  Date generateTimeStamp(){
         Date date = new Date();
         long time = date.getTime();
-        Timestamp timestamp = new Timestamp(time);
-        return timestamp;
+        return new Timestamp(time);
     }
 }

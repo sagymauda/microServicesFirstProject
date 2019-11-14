@@ -1,3 +1,4 @@
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -9,10 +10,13 @@ import java.util.UUID;
 @RequestMapping("/uuid-service")
 public class UUIDController {
 
+    @Autowired
+    UUIDService uuidService;
+
     @ResponseStatus(HttpStatus.OK)
     public UUID getUUID()
     {
-        return  UUIDService.generateRandomUUID();
+        return  uuidService.generateRandomUUID();
     }
 
 

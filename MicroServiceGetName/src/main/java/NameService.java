@@ -4,7 +4,7 @@ import java.util.Random;
 @Service
 public class NameService {
 
-    static String createName() {
+    public String createName() {
         Random random = new Random();
         int num =random.nextInt(10 - 2)+ 1;
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
