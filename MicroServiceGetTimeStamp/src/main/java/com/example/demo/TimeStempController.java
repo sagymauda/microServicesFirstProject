@@ -1,19 +1,24 @@
+package com.example.demo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
-@RequestMapping("/name-service")
-public class NameController {
+@RequestMapping("/timestemp")
+public class TimeStempController {
     @Autowired
-    NameService nameService;
+    TimeStempService timeStempService;
 
- @ResponseStatus(HttpStatus.OK)
-    public String getName(){
+    @GetMapping
+    public Date getTimeStamp() {
 
-       return   NameService.createName();
+        return   timeStempService.generateTimeStamp();
     }
 
 }
