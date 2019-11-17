@@ -11,26 +11,33 @@ import java. sql. Timestamp;
 @Service
 public class Ser{
 
+    private RestTemplate restTemplateUrl(String url){
+          RestTemplate restTemplate = new RestTemplate();
+           String nameResourceUrl= url;
+           return  restTemplate;
+    }
+
 
         public String createName() {
-            RestTemplate restTemplate = new RestTemplate();
-            String nameResourceUrl="http://localhost:8081/name";
-            ResponseEntity<String> response = restTemplate.getForEntity(nameResourceUrl,String.class);
+            ResponseEntity<String> response = restTemplateUrl("http://localhost:8081/name").getForEntity("http://localhost:8081/name",String.class);
 
             return response.getBody();
         }
         public UUID generateRandomUUID(){
-            return UUID.randomUUID();
+        ResponseEntity<UUID>response = restTemplateUrl("http://localhost:8082name").getForEntity("http://localhost:8082/name",UUID.class);
+
+            return response.getBody();
         }
 
-        public int generateRandomPrice(){
-            Random random = new Random();
-            return random.nextInt(1000-1)+1;
+        public Integer generateRandomPrice(){
+        ResponseEntity<Integer> response = restTemplateUrl("http://localhost:8083/name").getForEntity("http://localhost:8083/name",Integer.class);
+
+            return response.getBody();
         }
         public Date generateTimeStamp(){
-            Date date = new Date();
-            long time = date.getTime();
-            return new Timestamp(time);
+           ResponseEntity<Date>response = restTemplateUrl("http://localhost:8084/name").getForEntity("http://localhost:8083/name",Date.class);
+
+            return response.getBody();
         }
 
 
