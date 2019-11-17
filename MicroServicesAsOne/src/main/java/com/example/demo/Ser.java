@@ -1,6 +1,9 @@
 package com.example.demo;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -10,22 +13,11 @@ public class Ser{
 
 
         public String createName() {
-            Random random = new Random();
-            int num =random.nextInt(10 - 2)+ 1;
-            String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    + "abcdefghijklmnopqrstuvxyz";
+            RestTemplate restTemplate = new RestTemplate();
+            String nameResourceUrl="http://localhost:8081/name";
+            ResponseEntity<String> response = restTemplate.getForEntity(nameResourceUrl,String.class);
 
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < num; i++) {
-                int index
-                        = (int)(AlphaNumericString.length()
-                        * Math.random());
-
-                sb.append(AlphaNumericString
-                        .charAt(index));
-            }
-            return sb.toString();
+            return response.getBody();
         }
         public UUID generateRandomUUID(){
             return UUID.randomUUID();
