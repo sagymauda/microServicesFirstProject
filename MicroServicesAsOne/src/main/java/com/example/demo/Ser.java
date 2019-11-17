@@ -17,6 +17,13 @@ public class Ser{
            return  restTemplate;
     }
 
+//    private <T> micro(String url,Class<T> obj){
+//          RestTemplate restTemplate = new RestTemplate();
+//           String nameResourceUrl= url;
+//           ResponseEntity<T>response = (ResponseEntity<T>) restTemplate.getForEntity(url,obj.getClass())
+//        return  response.getBody();
+//    }
+
 
         public String createName() {
             ResponseEntity<String> response = restTemplateUrl("http://localhost:8081/name").getForEntity("http://localhost:8081/name",String.class);
@@ -24,18 +31,18 @@ public class Ser{
             return response.getBody();
         }
         public UUID generateRandomUUID(){
-        ResponseEntity<UUID>response = restTemplateUrl("http://localhost:8082name").getForEntity("http://localhost:8082/name",UUID.class);
+        ResponseEntity<UUID>response = restTemplateUrl("http://localhost:8082/uuid").getForEntity("http://localhost:8082/uuid",UUID.class);
 
             return response.getBody();
         }
 
         public Integer generateRandomPrice(){
-        ResponseEntity<Integer> response = restTemplateUrl("http://localhost:8083/name").getForEntity("http://localhost:8083/name",Integer.class);
+        ResponseEntity<Integer> response = restTemplateUrl("http://localhost:8083/price").getForEntity("http://localhost:8083/price",Integer.class);
 
             return response.getBody();
         }
         public Date generateTimeStamp(){
-           ResponseEntity<Date>response = restTemplateUrl("http://localhost:8084/name").getForEntity("http://localhost:8083/name",Date.class);
+           ResponseEntity<Date>response = restTemplateUrl("http://localhost:8084/timestemp").getForEntity("http://localhost:8084/timestemp",Date.class);
 
             return response.getBody();
         }
